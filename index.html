@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My First Website</title>
+
+  <style>
+  @keyframes fade{
+
+from{
+opacity: 0;
+}
+
+to{
+opacity: 1;
+}
+
+}
+
+body{
+ background:#111;
+ color:white;
+ text-align:center;
+ font-family:Arial;
+ display:flex;
+ flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+animation: fade 1s;
+}
+
+h1{
+ color:cyan;
+ font-size:50px;
+}
+
+input{
+ padding:15px;
+ width:250px;
+ border:none;
+ border-radius:10px;
+  font-size:18px;
+}
+
+  input:focus{
+ outline: none;
+ box-shadow: 0px 0px 20px cyan;
+}
+
+button{
+ padding:15px 40px;
+ font-size:20px;
+ background:red;
+ color:white;
+ border:none;
+ border-radius:10px;
+ cursor:pointer;
+ box-shadow: 0px 0px 20px orange;
+}
+
+ button:hover{
+background:yellow;
+color:black;
+transform: scale(1.1);
+transition: 0.3s;
+}
+
+@keyframes shake{
+
+0%{transform:translateX(0);}
+25%{transform:translateX(-10px);}
+50%{transform:translateX(10px);}
+75%{transform:translateX(-10px);}
+100%{transform:translateX(0);}
+
+}
+
+  </style>
+
+</head>
+
+<body>
+
+<h1 id="title">login page 🔐</h1>
+<input id="password"
+ type="password"
+  placeholder="Password">
+
+<br><br>
+
+<button onclick="showMessage()">
+  login
+</button>
+
+<script>
+
+  function showMessage(){
+
+ let password =
+ document.getElementById("password").value;
+
+ if(password == "1234"){
+
+   document.getElementById("title").innerHTML =
+   "Login Success 🔥";
+   document.body.style.background = "green";
+   window.location.href = "home.html";
+
+ }
+
+ else{
+  document.getElementById("password")
+.style.animation = "shake 0.3s";
+
+setTimeout(() => {
+
+document.getElementById("password")
+.style.animation = "";
+
+},300);
+
+document.getElementById("title").innerHTML =
+"Wrong Password ❌";
+
+document.body.style.background = "red";
+}
+
+document.getElementById("password").value = ""; 
+
+}
+document.getElementById("password")
+.addEventListener("keypress", function(event){
+
+if(event.key === "Enter"){
+
+showMessage();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
